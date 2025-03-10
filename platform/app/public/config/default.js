@@ -113,7 +113,7 @@ window.config = {
         enableStudyLazyLoad: true,
         supportsFuzzyMatching: true,
         supportsWildcard: false,
-        staticWado: true,
+        staticWado: false,
         singlepart: 'bulkdata,video',
         // whether the data source should use retrieveBulkData to grab metadata,
         // and in case of relative path, what would it be relative to, options
@@ -124,6 +124,12 @@ window.config = {
           transform: url => url.replace('/pixeldata.mp4', '/rendered'),
         },
         omitQuotationForMultipartRequest: true,
+        beforeSend: async (request) => {
+          const token = 'your-hardcoded-token-here'; // Replace with your actual token
+          request.headers['Authorization'] = `Bearer ${token}`;
+          console.log('Request headers:', request.headers); // Debug to confirm it’s working
+          return request;
+        },
       },
     },
 
@@ -133,9 +139,9 @@ window.config = {
       configuration: {
         friendlyName: 'AWS S3 Static wado secondary server',
         name: 'aws',
-        wadoUriRoot: 'https://dd14fa38qiwhyfd.cloudfront.net/dicomweb',
-        qidoRoot: 'https://dd14fa38qiwhyfd.cloudfront.net/dicomweb',
-        wadoRoot: 'https://dd14fa38qiwhyfd.cloudfront.net/dicomweb',
+        wadoUriRoot: 'https://SHITdd14fa38qiwhyfd.cloudfront.net/dicomweb',
+        qidoRoot: 'https://SHITdd14fa38qiwhyfd.cloudfront.net/dicomweb',
+        wadoRoot: 'https://SHITdd14fa38qiwhyfd.cloudfront.net/dicomweb',
         qidoSupportsIncludeField: false,
         supportsReject: false,
         imageRendering: 'wadors',
@@ -181,6 +187,15 @@ window.config = {
           relativeResolution: 'studies',
         },
         omitQuotationForMultipartRequest: true,
+        beforeSend: async (request) => {
+            const { userAuthenticationService } = servicesManager.services;
+            const token = await userAuthenticationService.getAccessToken();
+            if (token) {
+              request.headers['Authorization'] = `Bearer ${token}`;
+            }
+            console.log('Data source headers:', request.headers); // Debug
+            return request;
+        },
       },
     },
 
@@ -205,6 +220,15 @@ window.config = {
         bulkDataURI: {
           enabled: true,
           relativeResolution: 'studies',
+        },
+        beforeSend: async (request) => {
+            const { userAuthenticationService } = servicesManager.services;
+            const token = await userAuthenticationService.getAccessToken();
+            if (token) {
+              request.headers['Authorization'] = `Bearer ${token}`;
+            }
+            console.log('Data source headers:', request.headers); // Debug
+            return request;
         },
       },
     },
@@ -274,25 +298,25 @@ window.config = {
     // Could use services manager here to bring up a dialog/modal if needed.
     console.warn('test, navigate to https://ohif.org/');
   },
-  // whiteLabeling: {
+   whiteLabeling: {
   //   /* Optional: Should return a React component to be rendered in the "Logo" section of the application's Top Navigation bar */
-  //   createLogoComponentFn: function (React) {
-  //     return React.createElement(
-  //       'a',
-  //       {
-  //         target: '_self',
-  //         rel: 'noopener noreferrer',
-  //         className: 'text-purple-600 line-through',
-  //         href: '/',
-  //       },
-  //       React.createElement('img',
-  //         {
-  //           src: './assets/customLogo.svg',
-  //           className: 'w-8 h-8',
-  //         }
-  //       ))
-  //   },
-  // },
+     createLogoComponentFn: function (React) {
+       return React.createElement(
+         'a',
+         {
+           target: '_self',
+           rel: 'noopener noreferrer',
+           className: 'text-purple-600 line-through',
+           href: '/',
+         },
+         React.createElement('img',
+           {
+             src: './assets/ohif-logo.svg',
+             className: 'h-8',
+           }
+         ))
+     },
+   },
   hotkeys: [
     {
       commandName: 'incrementActiveViewport',

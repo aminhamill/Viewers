@@ -1,5 +1,4 @@
 // External
-
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import i18n from '@ohif/i18n';
@@ -30,42 +29,82 @@ import {
   TooltipProvider,
   ToolboxProvider,
 } from '@ohif/ui-next';
-// Viewer Project
-// TODO: Should this influence study list?
 import { AppConfigProvider } from '@state';
 import createRoutes from './routes';
 import appInit from './appInit.js';
-import OpenIdConnectRoutes from './utils/OpenIdConnectRoutes';
 import { ShepherdJourneyProvider } from 'react-shepherd';
+
+// Custom Login Component
+const Login = ({ onLogin }) => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch('https://dummyjson.com/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password }),
+      });
+      const data = await response.json();
+      if (response.ok) {
+        onLogin(data.accessToken);
+      } else {
+        setError('ورود ناموفق'); // "Login failed"
+      }
+    } catch (err) {
+       setError('خطا در اتصال'); // "Connection error"
+    }
+  };
+
+  return (
+    <div className="flex items-center justify-center h-screen bg-gray-100" dir="rtl">
+      <form onSubmit={handleSubmit} className="p-6 bg-white rounded shadow-md">
+        <img src="/assets/transparent.png" />
+        {error && <p className="text-red-500 mb-4">{error}</p>}
+        <input
+          type="text"
+          placeholder="نام کاربری" // "Username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          className="w-full p-2 mb-4 border rounded"
+        />
+        <input
+          type="password"
+          placeholder="رمز عبور" // "Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className="w-full p-2 mb-4 border rounded"
+        />
+        <button type="submit" className="w-full p-2 bg-primary-main text-white rounded">
+          ورود {/* "Login" */}
+        </button>
+      </form>
+    </div>
+  );
+};
 
 let commandsManager: CommandsManager,
   extensionManager: ExtensionManager,
   servicesManager: AppTypes.ServicesManager,
   serviceProvidersManager: ServiceProvidersManager,
   hotkeysManager: HotkeysManager;
-
+import configFunc from '../public/config/default.js';
 function App({
   config = {
-    /**
-     * Relative route from domain root that OHIF instance is installed at.
-     * For example:
-     *
-     * Hosted at: https://ohif.org/where-i-host-the/viewer/
-     * Value: `/where-i-host-the/viewer/`
-     * */
     routerBaseName: '/',
-    /**
-     *
-     */
     showLoadingIndicator: true,
     showStudyList: true,
-    oidc: [],
     extensions: [],
   },
   defaultExtensions = [],
   defaultModes = [],
 }) {
   const [init, setInit] = useState(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
   useEffect(() => {
     const run = async () => {
       appInit(config, defaultExtensions, defaultModes).then(setInit).catch(console.error);
@@ -78,21 +117,18 @@ function App({
     return null;
   }
 
-  // Set above for named export
   commandsManager = init.commandsManager;
   extensionManager = init.extensionManager;
   servicesManager = init.servicesManager;
   serviceProvidersManager = init.serviceProvidersManager;
   hotkeysManager = init.hotkeysManager;
 
-  // Set appConfig
   const appConfigState = init.appConfig;
-  const { routerBasename, modes, dataSources, oidc, showStudyList } = appConfigState;
+  const { routerBasename, modes, dataSources, showStudyList } = appConfigState;
 
-  // get the maximum 3D texture size
+  // Max 3D texture size
   const canvas = document.createElement('canvas');
   const gl = canvas.getContext('webgl2');
-
   if (gl) {
     const max3DTextureSize = gl.getParameter(gl.MAX_3D_TEXTURE_SIZE);
     appConfigState.max3DTextureSize = max3DTextureSize;
@@ -108,6 +144,26 @@ function App({
     uiNotificationService,
     customizationService,
   } = servicesManager.services;
+
+  // Extend userAuthenticationService with custom JWT logic
+  userAuthenticationService.setServiceImplementation({
+    isAuthenticated: () => isAuthenticated,
+    getAccessToken: async () => localStorage.getItem('token'),
+    signIn: async (token) => {
+      localStorage.setItem('token', token);
+      setIsAuthenticated(true);
+    },
+    signOut: async () => {
+      localStorage.removeItem('token');
+      setIsAuthenticated(false);
+    },
+    // Preserve other required methods
+    getUser: async () => ({ username: 'testuser' }), // Dummy user info; adjust as needed
+    clear: async () => {
+      localStorage.removeItem('token');
+      setIsAuthenticated(false);
+    },
+  });
 
   const providers = [
     [AppConfigProvider, { value: appConfigState }],
@@ -127,7 +183,6 @@ function App({
     [ShepherdJourneyProvider],
   ];
 
-  // Loop through and register each of the service providers registered with the ServiceProvidersManager.
   const providersFromManager = Object.entries(serviceProvidersManager.providers);
   if (providersFromManager.length > 0) {
     providersFromManager.forEach(([serviceName, provider]) => {
@@ -137,12 +192,8 @@ function App({
 
   const CombinedProviders = ({ children }) => Compose({ components: providers, children });
 
-  let authRoutes = null;
-
-  // Should there be a generic call to init on the extension manager?
   customizationService.init(extensionManager);
 
-  // Use config to create routes
   const appRoutes = createRoutes({
     modes,
     dataSources,
@@ -154,21 +205,19 @@ function App({
     showStudyList,
   });
 
-  if (oidc) {
-    authRoutes = (
-      <OpenIdConnectRoutes
-        oidc={oidc}
-        routerBasename={routerBasename}
-        userAuthenticationService={userAuthenticationService}
-      />
-    );
-  }
+  const handleLogin = (token: string) => {
+    console.log('Logging in with token:', token);
+    localStorage.setItem('token', token); // Set token directly
+    setIsAuthenticated(true);
+    userAuthenticationService.signIn(token);
+    console.log('isAuthenticated should now be true');
+  };
 
+  console.log('Rendering App, isAuthenticated:', isAuthenticated);
   return (
     <CombinedProviders>
       <BrowserRouter basename={routerBasename}>
-        {authRoutes}
-        {appRoutes}
+        {isAuthenticated ? appRoutes : <Login onLogin={handleLogin} />}
       </BrowserRouter>
     </CombinedProviders>
   );
@@ -178,17 +227,11 @@ App.propTypes = {
   config: PropTypes.oneOfType([
     PropTypes.func,
     PropTypes.shape({
-      routerBasename: PropTypes.string.isRequired,
-      oidc: PropTypes.array,
-      whiteLabeling: PropTypes.object,
+      routerBaseName: PropTypes.string.isRequired,
       extensions: PropTypes.array,
     }),
   ]).isRequired,
-  /* Extensions that are "bundled" or "baked-in" to the application.
-   * These would be provided at build time as part of they entry point. */
   defaultExtensions: PropTypes.array,
-  /* Modes that are "bundled" or "baked-in" to the application.
-   * These would be provided at build time as part of they entry point. */
   defaultModes: PropTypes.array,
 };
 

@@ -1,0 +1,20 @@
+{
+  "AccessionNumber": "شماره دسترسی",
+  "ClearFilters": "پاک کردن فیلترها",
+  "Description": "توضیحات",
+  "Empty": "خالی",
+  "Filter list to 100 studies or less to enable sorting": "لیست را به ۱۰۰ مطالعه یا کمتر فیلتر کنید تا مرتب‌سازی فعال شود",
+  "Instances": "نمونه‌ها",
+  "Modality": "روش",
+  "MRN": "شماره پرونده پزشکی",
+  "Next": "بعدی >",
+  "No studies available": "مطالعه‌ای در دسترس نیست",
+  "Number of studies": "تعداد مطالعات",
+  "Page": "صفحه",
+  "PatientName": "نام بیمار",
+  "Previous": "< بازگشت",
+  "Results per page": "نتایج در هر صفحه",
+  "StudyDate": "تاریخ مطالعه",
+  "StudyList": "لیست مطالعات",
+  "Upload": "بارگذاری"
+}

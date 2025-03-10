@@ -9,6 +9,7 @@ import nl from './nl/';
 import pt_BR from './pt-BR/';
 import vi from './vi/';
 import zh from './zh/';
+import fa_IR from './fa-IR';
 import test_lng from './test-LNG/';
 
 export default {
@@ -24,4 +25,5 @@ export default {
   ...vi,
   ...zh,
   ...test_lng,
+  ...fa_IR,
 };

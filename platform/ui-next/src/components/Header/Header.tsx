@@ -56,7 +56,7 @@ function Header({
       {...props}
     >
       <div className="relative h-[48px] items-center">
-        <div className="absolute left-0 top-1/2 flex -translate-y-1/2 items-center">
+        <div className="absolute right-0 top-1/2 flex -translate-y-1/2 items-center">
           <div
             className={classNames(
               'mr-3 inline-flex items-center',
@@ -75,43 +75,8 @@ function Header({
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
           <div className="flex items-center justify-center space-x-2">{children}</div>
         </div>
-        <div className="absolute right-0 top-1/2 flex -translate-y-1/2 select-none items-center">
+        <div className="absolute left-0 top-1/2 flex -translate-y-1/2 select-none items-center">
           {PatientInfo}
-          <div className="border-primary-dark mx-1.5 h-[25px] border-r"></div>
-          <div className="flex-shrink-0">
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="text-primary-active hover:bg-primary-dark mt-2 h-full w-full"
-                >
-                  <Icons.GearSettings />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                {menuOptions.map((option, index) => {
-                  const IconComponent = option.icon
-                    ? Icons[option.icon as keyof typeof Icons]
-                    : null;
-                  return (
-                    <DropdownMenuItem
-                      key={index}
-                      onSelect={option.onClick}
-                      className="flex items-center gap-2 py-2"
-                    >
-                      {IconComponent && (
-                        <span className="flex h-4 w-4 items-center justify-center">
-                          <Icons.ByName name={IconComponent.name} />
-                        </span>
-                      )}
-                      <span className="flex-1">{option.title}</span>
-                    </DropdownMenuItem>
-                  );
-                })}
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </div>
         </div>
       </div>
     </NavBar>

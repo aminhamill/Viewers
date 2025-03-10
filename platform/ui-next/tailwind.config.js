@@ -10,7 +10,7 @@ module.exports = {
   prefix: '',
   theme: {
     fontFamily: {
-      inter: ['Inter', 'sans-serif'],
+      inter: ['Yekan','Inter', 'sans-serif'],
     },
     fontSize: {
       xxs: '0.625rem', // 10px
@@ -19,16 +19,11 @@ module.exports = {
       base: '0.8125rem', // 13px
       lg: '0.875rem', // 14px
       xl: '1rem', // 16px
-      // 2xl and above will be updated in an upcoming version
       '2xl': '1.5rem',
       '3xl': '1.875rem',
       '4xl': '2.25rem',
       '5xl': '3rem',
       '6xl': '4rem',
-      // '2xl': '1.125rem', // 18px
-      // '3xl': '1.375rem', // 22px
-      // '4xl': '1.5rem', // 24px
-      // '5xl': '1.875rem', // 30px
     },
     fontWeight: {
       hairline: '100',
@@ -77,6 +72,21 @@ module.exports = {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
         },
+        // Updated to Material Design Gray Palette
+        bkg: {
+          low: '#212121',    // Gray 900 (was #050615)
+          med: '#424242',    // Gray 800 (was #090C29)
+          full: '#616161',   // Gray 700 (was #041C4A)
+        },
+        info: {
+          primary: '#FAFAFA', // Gray 50 (was #FFFFFF)
+          secondary: '#BDBDBD', // Gray 400 (was #7BB2CE)
+        },
+        actions: {
+          primary: '#9E9E9E',   // Gray 500 (was #348CFD)
+          highlight: '#E0E0E0', // Gray 300 (was #5ACCE6)
+          hover: 'rgba(158, 158, 158, 0.2)', // Gray 500 opacity (was rgba(52, 140, 253, 0.2))
+        },
       },
       borderRadius: {
         lg: 'var(--radius)',
@@ -96,20 +106,6 @@ module.exports = {
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
-      },
-      bkg: {
-        low: '#050615',
-        med: '#090C29',
-        full: '#041C4A',
-      },
-      info: {
-        primary: '#FFFFFF',
-        secondary: '#7BB2CE',
-      },
-      actions: {
-        primary: '#348CFD',
-        highlight: '#5ACCE6',
-        hover: 'rgba(52, 140, 253, 0.2)',
       },
     },
   },

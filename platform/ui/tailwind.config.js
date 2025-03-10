@@ -14,197 +14,198 @@ module.exports = {
       xl: '1280px',
     },
     fontFamily: {
-      inter: ['Inter', 'sans-serif'],
+      inter: ['Yekan','Inter', 'sans-serif'],
     },
     colors: {
       overlay: 'rgba(0, 0, 0, 0.8)',
       transparent: 'transparent',
-      black: '#000',
-      white: '#fff',
+      black: '#424242', // Gray 800 (was #000)
+      white: '#FAFAFA', // Gray 50 (was #fff)
       initial: 'initial',
       inherit: 'inherit',
 
       aqua: {
-        pale: '#7bb2ce',
+        pale: '#BDBDBD', // Gray 400 (was #7bb2ce)
       },
 
       primary: {
-        light: '#5acce6',
-        main: '#0944b3',
-        dark: '#090c29',
-        active: '#348cfd',
+        light: '#EEEEEE',  // Gray 200 (was #5acce6)
+        main: '#9E9E9E',   // Gray 500 (was #0944b3)
+        dark: '#616161',   // Gray 700 (was #090c29)
+        active: '#BDBDBD', // Gray 400 (was #348cfd)
       },
       inputfield: {
-        main: '#3a3f99',
-        disabled: '#2b166b',
-        focus: '#5acce6',
-        placeholder: '#39383f',
+        main: '#757575',   // Gray 600 (was #3a3f99)
+        disabled: '#616161', // Gray 700 (was #2b166b)
+        focus: '#E0E0E0',  // Gray 300 (was #5acce6)
+        placeholder: '#9E9E9E', // Gray 500 (was #39383f)
       },
 
       secondary: {
-        light: '#3a3f99',
-        main: '#2b166b',
-        dark: '#041c4a',
-        active: '#1f1f27',
+        light: '#EEEEEE',  // Gray 200 (was #3a3f99)
+        main: '#757575',   // Gray 600 (was #2b166b)
+        dark: '#616161',   // Gray 700 (was #041c4a)
+        active: '#424242', // Gray 800 (was #1f1f27)
       },
 
       indigo: {
-        dark: '#0b1a42',
+        dark: '#212121',   // Gray 900 (was #0b1a42)
       },
 
       common: {
-        bright: '#e1e1e1',
-        light: '#a19fad',
-        main: '#fff',
-        dark: '#726f7e',
-        active: '#2c3074',
+        bright: '#F5F5F5', // Gray 100 (was #e1e1e1)
+        light: '#BDBDBD',  // Gray 400 (was #a19fad)
+        main: '#FAFAFA',   // Gray 50 (was #fff)
+        dark: '#757575',   // Gray 600 (was #726f7e)
+        active: '#616161', // Gray 700 (was #2c3074)
       },
       bkg: {
-        low: '#050615',
-        med: '#090C29',
-        full: '#041C4A',
+        low: '#212121',    // Gray 900 (was #050615)
+        med: '#424242',    // Gray 800 (was #090C29)
+        full: '#616161',   // Gray 700 (was #041C4A)
       },
       info: {
-        primary: '#FFFFFF',
-        secondary: '#7BB2CE',
+        primary: '#FAFAFA', // Gray 50 (was #FFFFFF)
+        secondary: '#BDBDBD', // Gray 400 (was #7BB2CE)
       },
       actions: {
-        primary: '#348CFD',
-        highlight: '#5ACCE6',
-        hover: 'rgba(52, 140, 253, 0.2)',
+        primary: '#9E9E9E',   // Gray 500 (was #348CFD)
+        highlight: '#E0E0E0', // Gray 300 (was #5ACCE6)
+        hover: 'rgba(158, 158, 158, 0.2)', // Gray 500 opacity (was rgba(52, 140, 253, 0.2))
       },
       customgreen: {
-        100: '#05D97C',
-        200: '#0FD97C',
+        100: '#E0E0E0',    // Gray 300 (was #05D97C)
+        200: '#BDBDBD',    // Gray 400 (was #0FD97C)
       },
 
       customblue: {
-        10: '#0A163F',
-        20: '#0B1F54',
-        30: '#09286e',
-        40: '#0E307F',
-        50: '#0F3A94',
-        80: '#1454D4',
-        100: '#c4fdff',
-        200: '#38daff',
-        300: '#1D204D',
-        400: '#90A0C1',
+        10: '#212121',     // Gray 900 (was #0A163F)
+        20: '#424242',     // Gray 800 (was #0B1F54)
+        30: '#616161',     // Gray 700 (was #09286e)
+        40: '#757575',     // Gray 600 (was #0E307F)
+        50: '#9E9E9E',     // Gray 500 (was #0F3A94)
+        80: '#BDBDBD',     // Gray 400 (was #1454D4)
+        100: '#F5F5F5',    // Gray 100 (was #c4fdff)
+        200: '#EEEEEE',    // Gray 200 (was #38daff)
+        300: '#757575',    // Gray 600 (was #1D204D)
+        400: '#E0E0E0',    // Gray 300 (was #90A0C1)
       },
 
       customgray: {
-        100: '#262943',
+        100: '#616161',    // Gray 700 (was #262943)
       },
 
       gray: {
-        100: '#f7fafc',
-        200: '#edf2f7',
-        300: '#e2e8f0',
-        400: '#cbd5e0',
-        500: '#a0aec0',
-        600: '#718096',
-        700: '#4a5568',
-        800: '#2d3748',
-        900: '#1a202c',
+        50: '#FAFAFA',     // (replacing #f7fafc)
+        100: '#F5F5F5',    // (replacing #edf2f7)
+        200: '#EEEEEE',    // (replacing #e2e8f0)
+        300: '#E0E0E0',    // (replacing #cbd5e0)
+        400: '#BDBDBD',    // (replacing #a0aec0)
+        500: '#9E9E9E',    // (replacing #718096)
+        600: '#757575',    // (replacing #4a5568)
+        700: '#616161',    // (replacing #2d3748)
+        800: '#424242',    // (replacing #1a202c)
+        900: '#212121',    // (new addition)
       },
       red: {
-        100: '#fff5f5',
-        200: '#fed7d7',
-        300: '#feb2b2',
-        400: '#fc8181',
-        500: '#f56565',
-        600: '#e53e3e',
-        700: '#c53030',
-        800: '#9b2c2c',
-        900: '#742a2a',
+        100: '#F5F5F5',    // Gray 100 (was #fff5f5)
+        200: '#EEEEEE',    // Gray 200 (was #fed7d7)
+        300: '#E0E0E0',    // Gray 300 (was #feb2b2)
+        400: '#BDBDBD',    // Gray 400 (was #fc8181)
+        500: '#9E9E9E',    // Gray 500 (was #f56565)
+        600: '#757575',    // Gray 600 (was #e53e3e)
+        700: '#616161',    // Gray 700 (was #c53030)
+        800: '#424242',    // Gray 800 (was #9b2c2c)
+        900: '#212121',    // Gray 900 (was #742a2a)
       },
       orange: {
-        100: '#fffaf0',
-        200: '#feebc8',
-        300: '#fbd38d',
-        400: '#f6ad55',
-        500: '#ed8936',
-        600: '#dd6b20',
-        700: '#c05621',
-        800: '#9c4221',
-        900: '#7b341e',
+        100: '#F5F5F5',    // Gray 100 (was #fffaf0)
+        200: '#EEEEEE',    // Gray 200 (was #feebc8)
+        300: '#E0E0E0',    // Gray 300 (was #fbd38d)
+        400: '#BDBDBD',    // Gray 400 (was #f6ad55)
+        500: '#9E9E9E',    // Gray 500 (was #ed8936)
+        600: '#757575',    // Gray 600 (was #dd6b20)
+        700: '#616161',    // Gray 700 (was #c05621)
+        800: '#424242',    // Gray 800 (was #9c4221)
+        900: '#212121',    // Gray 900 (was #7b341e)
       },
       yellow: {
-        100: '#fffff0',
-        200: '#fefcbf',
-        300: '#faf089',
-        400: '#f6e05e',
-        500: '#ecc94b',
-        600: '#d69e2e',
-        700: '#b7791f',
-        800: '#975a16',
-        900: '#744210',
+        100: '#F5F5F5',    // Gray 100 (was #fffff0)
+        200: '#EEEEEE',    // Gray 200 (was #fefcbf)
+        300: '#E0E0E0',    // Gray 300 (was #faf089)
+        400: '#BDBDBD',    // Gray 400 (was #f6e05e)
+        500: '#9E9E9E',    // Gray 500 (was #ecc94b)
+        600: '#757575',    // Gray 600 (was #d69e2e)
+        700: '#616161',    // Gray 700 (was #b7791f)
+        800: '#424242',    // Gray 800 (was #975a16)
+        900: '#212121',    // Gray 900 (was #744210)
       },
       green: {
-        100: '#f0fff4',
-        200: '#c6f6d5',
-        300: '#9ae6b4',
-        400: '#68d391',
-        500: '#48bb78',
-        600: '#38a169',
-        700: '#2f855a',
-        800: '#276749',
-        900: '#22543d',
+        100: '#F5F5F5',    // Gray 100 (was #f0fff4)
+        200: '#EEEEEE',    // Gray 200 (was #c6f6d5)
+        300: '#E0E0E0',    // Gray 300 (was #9ae6b4)
+        400: '#BDBDBD',    // Gray 400 (was #68d391)
+        500: '#9E9E9E',    // Gray 500 (was #48bb78)
+        600: '#757575',    // Gray 600 (was #38a169)
+        700: '#616161',    // Gray 700 (was #2f855a)
+        800: '#424242',    // Gray 800 (was #276749)
+        900: '#212121',    // Gray 900 (was #22543d)
       },
       teal: {
-        100: '#e6fffa',
-        200: '#b2f5ea',
-        300: '#81e6d9',
-        400: '#4fd1c5',
-        500: '#38b2ac',
-        600: '#319795',
-        700: '#2c7a7b',
-        800: '#285e61',
-        900: '#234e52',
+        100: '#F5F5F5',    // Gray 100 (was #e6fffa)
+        200: '#EEEEEE',    // Gray 200 (was #b2f5ea)
+        300: '#E0E0E0',    // Gray 300 (was #81e6d9)
+        400: '#BDBDBD',    // Gray 400 (was #4fd1c5)
+        500: '#9E9E9E',    // Gray 500 (was #38b2ac)
+        600: '#757575',    // Gray 600 (was #319795)
+        700: '#616161',    // Gray 700 (was #2c7a7b)
+        800: '#424242',    // Gray 800 (was #285e61)
+        900: '#212121',    // Gray 900 (was #234e52)
       },
       blue: {
-        100: '#ebf8ff',
-        200: '#bee3f8',
-        300: '#90cdf4',
-        400: '#63b3ed',
-        500: '#4299e1',
-        600: '#3182ce',
-        700: '#2b6cb0',
-        800: '#2c5282',
-        900: '#2a4365',
+        100: '#F5F5F5',    // Gray 100 (was #ebf8ff)
+        200: '#EEEEEE',    // Gray 200 (was #bee3f8)
+        300: '#E0E0E0',    // Gray 300 (was #90cdf4)
+        400: '#BDBDBD',    // Gray 400 (was #63b3ed)
+        500: '#9E9E9E',    // Gray 500 (was #4299e1)
+        600: '#757575',    // Gray 600 (was #3182ce)
+        700: '#616161',    // Gray 700 (was #2b6cb0)
+        800: '#424242',    // Gray 800 (was #2c5282)
+        900: '#212121',    // Gray 900 (was #2a4365)
       },
       indigo: {
-        100: '#ebf4ff',
-        200: '#c3dafe',
-        300: '#a3bffa',
-        400: '#7f9cf5',
-        500: '#667eea',
-        600: '#5a67d8',
-        700: '#4c51bf',
-        800: '#434190',
-        900: '#3c366b',
-        dark: '#0b1a42',
+        100: '#F5F5F5',    // Gray 100 (was #ebf4ff)
+        200: '#EEEEEE',    // Gray 200 (was #c3dafe)
+        300: '#E0E0E0',    // Gray 300 (was #a3bffa)
+        400: '#BDBDBD',    // Gray 400 (was #7f9cf5)
+        500: '#9E9E9E',    // Gray 500 (was #667eea)
+        600: '#757575',    // Gray 600 (was #5a67d8)
+        700: '#616161',    // Gray 700 (was #4c51bf)
+        800: '#424242',    // Gray 800 (was #434190)
+        900: '#212121',    // Gray 900 (was #3c366b)
+        dark: '#212121',   // Gray 900 (was #0b1a42)
       },
       purple: {
-        100: '#faf5ff',
-        200: '#e9d8fd',
-        300: '#d6bcfa',
-        400: '#b794f4',
-        500: '#9f7aea',
-        600: '#805ad5',
-        700: '#6b46c1',
-        800: '#553c9a',
-        900: '#44337a',
+        100: '#F5F5F5',    // Gray 100 (was #faf5ff)
+        200: '#EEEEEE',    // Gray 200 (was #e9d8fd)
+        300: '#E0E0E0',    // Gray 300 (was #d6bcfa)
+        400: '#BDBDBD',    // Gray 400 (was #b794f4)
+        500: '#9E9E9E',    // Gray 500 (was #9f7aea)
+        600: '#757575',    // Gray 600 (was #805ad5)
+        700: '#616161',    // Gray 700 (was #6b46c1)
+        800: '#424242',    // Gray 800 (was #553c9a)
+        900: '#212121',    // Gray 900 (was #44337a)
       },
       pink: {
-        100: '#fff5f7',
-        200: '#fed7e2',
-        300: '#fbb6ce',
-        400: '#f687b3',
-        500: '#ed64a6',
-        600: '#d53f8c',
-        700: '#b83280',
-        800: '#97266d',
-        900: '#702459',
+        100: '#F5F5F5',    // Gray 100 (was #fff5f7)
+        200: '#EEEEEE',    // Gray 200 (was #fed7e2)
+        300: '#E0E0E0',    // Gray 300 (was #fbb6ce)
+        400: '#BDBDBD',    // Gray 400 (was #f687b3)
+        500: '#9E9E9E',    // Gray 500 (was #ed64a6)
+        600: '#757575',    // Gray 600 (was #d53f8c)
+        700: '#616161',    // Gray 700 (was #b83280)
+        800: '#424242',    // Gray 800 (was #97266d)
+        900: '#212121',    // Gray 900 (was #702459)
       },
     },
     backgroundColor: theme => theme('colors'),
@@ -775,6 +776,7 @@ module.exports = {
     transitionTimingFunction: ['responsive'],
     transitionDuration: ['responsive'],
   },
+  // Removed the extra extend block you added since it’s redundant here
   corePlugins: {},
   plugins: [],
 };

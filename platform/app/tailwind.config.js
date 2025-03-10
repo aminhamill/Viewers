@@ -6,7 +6,10 @@ module.exports = {
   // ...(process.env.NODE_ENV === 'development' && {
   //   safelist: [{ pattern: /.*/ }],
   // }),
-  presets: [require('../ui/tailwind.config.js'), require('../ui-next/tailwind.config.js')],
+  presets: [
+    require('../ui/tailwind.config.js'),
+    require('../ui-next/tailwind.config.js')
+  ],
   content: [
     './src/**/*.{jsx,js,ts,tsx, css}',
     '../../extensions/**/*.{jsx,js,ts,tsx, css}',
@@ -20,6 +23,7 @@ module.exports = {
   theme: {
     fontFamily: {
       sans: [
+        'Yekan',
         'Inter',
         'system-ui',
         '-apple-system',
@@ -51,6 +55,30 @@ module.exports = {
       '4xl': '2.25rem',
       '5xl': '3rem',
       '6xl': '4rem',
+    },
+    extend: {
+      colors: {
+        // Material Design Gray Palette
+        gray: {
+          50: '#FAFAFA',
+          100: '#F5F5F5',
+          200: '#EEEEEE',
+          300: '#E0E0E0',
+          400: '#BDBDBD',
+          500: '#9E9E9E',
+          600: '#757575',
+          700: '#616161',
+          800: '#424242',
+          900: '#212121',
+        },
+        // Redefine primary using gray shades
+        primary: {
+          light: '#EEEEEE',  // Gray 200
+          main: '#9E9E9E',   // Gray 500
+          dark: '#616161',   // Gray 700
+          active: '#BDBDBD', // Gray 400
+        },
+      },
     },
   },
 };

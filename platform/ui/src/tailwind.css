@@ -1,14 +1,33 @@
 /* IMPORT CUSTOM FONT */
 @import url('https://fonts.googleapis.com/css?family=Inter:100,300,400,500,700&display=swap');
 
+/* Import Custom Font */
+@font-face {
+  font-family: 'Yekan';
+  src: url('./fonts/iran-sans.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-  html {
-    font-family: 'Inter', sans-serif;
+  html,body {
+    direction: rtl;
+    font-family: 'Yekan','Inter', sans-serif;
   }
+  .container {
+    direction: rtl;
+  }
+  /* RTL fixes for Tailwind */
+  [dir="rtl"] .text-left { text-align: right; }
+  [dir="rtl"] .text-right { text-align: left; }
+  [dir="rtl"] .float-left { float: right; }
+  [dir="rtl"] .float-right { float: left; }
+  [dir="rtl"] [class*="ml-"] { margin-right: inherit; margin-left: 0; }
+  [dir="rtl"] [class*="mr-"] { margin-left: inherit; margin-right: 0; }
 }
 
 /* Truncate 2 lines utility */
