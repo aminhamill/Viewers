@@ -26,6 +26,45 @@ const StudyListFilter = ({
       ...sortingValues,
     });
   };
+  const transformFilterValues = (newValues: any) => {
+    const updated = { ...newValues };
+
+    if (newValues.dateRangePreset) {
+      const now = new Date();
+      let startDate: Date | null = null;
+      const endDate = new Date(); // always now
+
+      switch (newValues.dateRangePreset) {
+        case 'today':
+          startDate = new Date();
+          startDate.setHours(0, 0, 0, 0);
+          break;
+        case 'week':
+          startDate = new Date();
+          startDate.setDate(now.getDate() - now.getDay()); // Start of week
+          startDate.setHours(0, 0, 0, 0);
+          break;
+        case 'month':
+          startDate = new Date(now.getFullYear(), now.getMonth(), 1);
+          break;
+        case 'year':
+          startDate = new Date(now.getFullYear(), 0, 1);
+          break;
+      }
+
+      const format = (d: Date) => d.toISOString().split('T')[0];
+
+      if (startDate) {
+        updated.studyDateFrom = format(startDate);
+        updated.studyDateTo = format(endDate);
+      } else {
+        delete updated.studyDateFrom;
+        delete updated.studyDateTo;
+      }
+    }
+
+    return updated;
+  };
   const isSortingEnabled = numOfStudies > 0 && numOfStudies <= 100;
 
   return (
@@ -78,7 +117,10 @@ const StudyListFilter = ({
           <InputGroup
             inputMeta={filtersMeta}
             values={filterValues}
-            onValuesChange={onChange}
+            onValuesChange={(newValues) => {
+              const transformed = transformFilterValues(newValues);
+              onChange(transformed);
+            }}
             sorting={filterSorting}
             onSortingChange={setFilterSorting}
             isSortingEnabled={isSortingEnabled}
