@@ -382,6 +382,28 @@ function WorkList({
           }
         >
           <div className="flex flex-row gap-2">
+            <Link
+                    className={true ? '' : 'cursor-not-allowed'}
+                    key='10'
+                    to={`weasis://${publicUrl}?`}
+                  >
+            <Button
+                      type={ButtonEnums.type.primary}
+                      size={ButtonEnums.size.medium}
+                      startIcon={
+                        true ? (
+                          <Icons.LaunchArrow className="!h-[20px] !w-[20px] text-black" />
+                        ) : (
+                          <Icons.LaunchInfo className="!h-[20px] !w-[20px] text-black" />
+                        )
+                      }
+                      onClick={() => {}}
+                      dataCY={`mode`}
+                      className={true ? 'text-[13px]' : 'bg-[#008B8B] text-[13px]'}
+                    >
+                      پکسل ویژن
+                    </Button>
+          </Link>
             {(appConfig.groupEnabledModesFirst
               ? appConfig.loadedModes.sort((a, b) => {
                   const isValidA = a.isValidMode({

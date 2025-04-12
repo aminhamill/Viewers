@@ -120,3 +120,9 @@
     --chart-5: 340 75% 55%;
   }
 }
+
+
+.bg-primary-main {
+  --tw-bg-opacity: 1;
+  background-color: rgba(0, 139, 139, 0.8);
+}

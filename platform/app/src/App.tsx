@@ -103,7 +103,7 @@ function App({
   defaultModes = [],
 }) {
   const [init, setInit] = useState(null);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(true);
 
   useEffect(() => {
     const run = async () => {
@@ -217,7 +217,7 @@ function App({
   return (
     <CombinedProviders>
       <BrowserRouter basename={routerBasename}>
-        {isAuthenticated ? appRoutes : <Login onLogin={handleLogin} />}
+        {true ? appRoutes : <Login onLogin={handleLogin} />}
       </BrowserRouter>
     </CombinedProviders>
   );

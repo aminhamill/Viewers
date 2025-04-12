@@ -4,7 +4,7 @@ import classnames from 'classnames';
 import { Icons } from '@ohif/ui-next';
 
 const baseLabelClassName = 'flex flex-col flex-1 text-white text-lg pl-1 select-none';
-const spanClassName = 'flex flex-row items-center cursor-pointer focus:outline-none';
+const spanClassName = 'flex flex-row items-center cursor-pointer focus:outline-none justify-center';
 
 const sortIconMap = {
   descending: () => <Icons.SortingDescending className="text-primary-main mx-2 w-2" />,
