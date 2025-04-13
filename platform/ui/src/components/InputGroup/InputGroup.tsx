@@ -36,7 +36,7 @@ const InputGroup = ({
     }
   };
 
-  const renderFieldInputComponent = ({ name, displayName, inputProps, isSortable, inputType }) => {
+  const renderFieldInputComponent = ({ name, displayName,option, inputProps, isSortable, inputType }) => {
     const _isSortable = isSortable && isSortingEnabled;
     const _sortDirection = sortBy !== name ? 'none' : sortDirection;
 

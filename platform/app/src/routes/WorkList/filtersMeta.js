@@ -26,13 +26,15 @@ const filtersMeta = [
     name: 'dateRangePreset',
     displayName: 'Study Date',
     inputType: 'MultiSelect',
-    options: [
-      { value: '', label: 'All Dates' },
-      { value: 'today', label: 'Today' },
-      { value: 'week', label: 'This Week' },
-      { value: 'month', label: 'This Month' },
-      { value: 'year', label: 'This Year' },
-    ],
+    inputProps: { // ✅ use inputProps, not option
+      options: [
+        { value: '', label: 'All Dates' },
+        { value: 'today', label: 'Today' },
+        { value: 'week', label: 'This Week' },
+        { value: 'month', label: 'This Month' },
+        { value: 'year', label: 'This Year' },
+      ]
+    },
     gridCol: 3,
     isSortable: false,
   },
