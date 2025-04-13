@@ -26,7 +26,7 @@ const filtersMeta = [
     name: 'dateRangePreset',
     displayName: 'Study Date',
     inputType: 'MultiSelect',
-    option: [
+    options: [
       { value: '', label: 'All Dates' },
       { value: 'today', label: 'Today' },
       { value: 'week', label: 'This Week' },

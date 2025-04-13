@@ -86,7 +86,7 @@ const InputGroup = ({
             onLabelClick={onLabelClick}
             value={values[name]}
             onChange={handleFieldChange}
-            options={inputProps.options}
+            options={inputProps?.options || []}
           />
         );
       case 'DateRange':
