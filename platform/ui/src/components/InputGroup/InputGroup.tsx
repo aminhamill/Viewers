@@ -87,6 +87,7 @@ const InputGroup = ({
             value={values[name]}
             onChange={handleFieldChange}
             options={inputProps?.options || []}
+            isMulti={false}
           />
         );
       case 'DateRange':

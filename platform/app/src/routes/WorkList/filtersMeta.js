@@ -25,7 +25,7 @@ const filtersMeta = [
   {
     name: 'dateRangePreset',
     displayName: 'Study Date',
-    inputType: 'MultiSelect',
+    inputType: 'Select',
     inputProps: { // ✅ use inputProps, not option
       options: [
         { value: '', label: 'All Dates' },
