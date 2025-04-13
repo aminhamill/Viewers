@@ -7,6 +7,7 @@ import InputText from '../InputText';
 import InputDateRange from '../InputDateRange';
 import InputMultiSelect from '../InputMultiSelect';
 import InputLabelWrapper from '../InputLabelWrapper';
+import InputSelect from '../InputSelect';
 
 const InputGroup = ({
   inputMeta,
@@ -73,6 +74,20 @@ const InputGroup = ({
             onLabelClick={onLabelClick}
             value={values[name]}
             onChange={handleFieldChange}
+          />
+        );
+      case 'Select':
+        return (
+          <InputSelect
+            id={name}
+            key={name}
+            label={displayName}
+            isSortable={_isSortable}
+            sortDirection={_sortDirection}
+            onLabelClick={onLabelClick}
+            value={values[name]}
+            onChange={handleFieldChange}
+            options={inputProps?.options || []}
           />
         );
       case 'MultiSelect':
